@@ -28,15 +28,18 @@ export function buildCellSet(cells) {
   return new Set(cells.map(([row, col]) => `${row},${col}`));
 }
 
-export function getGroupedPatterns() {
-  const groups = {};
-  for (const pattern of patterns) {
-    if (!groups[pattern.category]) {
-      groups[pattern.category] = [];
-    }
-    groups[pattern.category].push(pattern);
-  }
-  return groups;
+export function getRegularPatterns() {
+  return patterns.filter(p => ['Horizontal', 'Vertical', 'Diagonal'].includes(p.category));
+}
+
+export function getRegularPlusCornersPatterns() {
+  return patterns.filter(p =>
+    ['Horizontal', 'Vertical', 'Diagonal'].includes(p.category) || p.id === 's-corners'
+  );
+}
+
+export function getSpecialPatterns() {
+  return patterns.filter(p => p.category === 'Special');
 }
 
 export function getPatternById(id) {
