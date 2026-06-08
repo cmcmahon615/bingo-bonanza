@@ -1,6 +1,6 @@
 const HEADERS = ['B', 'I', 'N', 'G', 'O'];
 
-export default function BingoCard({ markedCells }) {
+export default function BingoCard({ markedCells, editable = false, onCellToggle }) {
   return (
     <div className="inline-block">
       {/* Column headers */}
@@ -26,7 +26,10 @@ export default function BingoCard({ markedCells }) {
           return (
             <div
               key={`${row},${col}`}
-              className="w-16 h-16 relative flex items-center justify-center border border-gray-300 bg-white rounded-md text-sm font-medium text-gray-500"
+              onClick={editable ? () => onCellToggle(row, col) : undefined}
+              className={`w-16 h-16 relative flex items-center justify-center border border-gray-300 bg-white rounded-md text-sm font-medium text-gray-500${
+                editable ? ' cursor-pointer hover:bg-indigo-50 hover:border-indigo-300' : ''
+              }`}
             >
               {isFree && <span className="text-xs font-bold text-indigo-600">FREE</span>}
               {isMarked && (

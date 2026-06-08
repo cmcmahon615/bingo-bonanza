@@ -22,6 +22,10 @@ const patterns = [
   { id: 's-blackout', name: 'Blackout', category: 'Special', cells: Array.from({ length: 25 }, (_, i) => [Math.floor(i / 5), i % 5]) },
   { id: 's-x', name: 'X Pattern', category: 'Special', cells: [[0,0],[0,4],[1,1],[1,3],[2,2],[3,1],[3,3],[4,0],[4,4]] },
   { id: 's-plus', name: 'Plus / Cross', category: 'Special', cells: [[0,2],[1,2],[2,0],[2,1],[2,2],[2,3],[2,4],[3,2],[4,2]] },
+
+  //User Created
+  { id: 'u-diamond', name: 'Diamond', category: 'Special', cells: [[0,2],[1,1],[2,0],[3,1],[4,2],[3,3],[2,4],[1,3]] },
+  { id: 'u-t', name: 'T', category: 'Special', cells: [[0,0],[0,1],[0,2],[0,3],[0,4],[1,2],[2,2],[3,2],[4,2]] },
 ];
 
 export function buildCellSet(cells) {
